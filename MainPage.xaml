@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="JobList.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JobList"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.ColumnSpan="2">
+            <ListView ItemsSource="{x:Bind Jobs}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Job">
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind Title}"/>
+                            <HyperlinkButton Content="{x:Bind Link}" Click="Link_Click"/>
+                            <TextBlock Text="{x:Bind Date}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="3">
+
+        </ScrollViewer>
+    </Grid>
+</Page>
